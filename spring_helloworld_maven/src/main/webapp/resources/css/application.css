@@ -1,0 +1,62 @@
+body{
+	padding: 0;
+	margin: 0;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#404040;
+}
+
+a{
+	color:#8C8377;
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+input.textField, input.submitButton{
+	width:150px;
+	border:solid 1px #404040;
+}
+
+label{
+	line-height:25px;
+}
+
+table td{
+	font-size:11px;
+}
+
+table#mainLayout{
+	width:100%; 
+}
+
+td#header{
+	height:100px;
+	background-color:#E3CFD4;
+	border:solid 1px #C45A75;
+	padding-left:20px;
+}
+
+td#leftBar{
+	width:100px;
+	background-color:#DCE6C1;
+	border:solid 1px #9FB85C;
+	padding-left:20px;
+	
+}
+
+td#footer{
+	height:100px;
+	background-color:#C1D1E0;
+	border:solid 1px #5B7FA3;
+	padding-left:20px;
+	
+}
+
+#resultsArea{
+	background-color:#E8E0CC;
+	border:solid 1px #F2AC49;
+	margin-top:10px;
+}
