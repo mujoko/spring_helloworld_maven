@@ -3,14 +3,19 @@
  */
 package org.spring.helloworld.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 /**
@@ -21,14 +26,10 @@ import javax.validation.constraints.Size;
 public class BoxModel {
 	
 	private static final String PROCESSING_TYPE_DEFAULT = "post";
-
-
-	@Transient
-	private String processingType = PROCESSING_TYPE_DEFAULT;
-
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(generator = "idGen")
+    @GenericGenerator(strategy = "uuid.hex", name = "idGen")
 	@Column(name = "model_id")
 	private String modelId;
 
@@ -51,17 +52,67 @@ public class BoxModel {
 	@Size(min=1)
 	@Column(name = "box_five")
 	private String boxFive;
-	
-//	
-//	/**
-//     * billingPeriod.
-//     */
-//    @Column(name = "BP_DATE")
-//    @Temporal(TemporalType.DATE)
-//    private Date bpDate;
-//    
+
+	@Size(min=1)
+	@Column(name = "box_area")
+	private String boxArea;
+
+
+    public String getBoxArea() {
+		return boxArea;
+	}
+
+	public void setBoxArea(String boxArea) {
+		this.boxArea = boxArea;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	/** Entity Created On. */
+    @Column(name = "CREATED_ON")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdOn;
     
-		
+    @Column(name = "active", nullable = true, length = 1)
+    private Boolean active;
+    
+    
+    
+    
+    @Column(name = "type", nullable = true, length = 1)
+    private String type;
+    
+    
+    
+    
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+
+
+	
+	@Transient
+	private String processingType = PROCESSING_TYPE_DEFAULT;
+	
 	public String getModelId() {
 		return modelId;
 	}
@@ -116,13 +167,5 @@ public class BoxModel {
 	public void setProcessingType(String processingType) {
 		this.processingType = processingType;
 	}
-//
-//	public void setBpDate(Date bpDate) {
-//		this.bpDate = bpDate;
-//	}
-//
-//	public Date getBpDate() {
-//		return bpDate;
-//	}
 
 }

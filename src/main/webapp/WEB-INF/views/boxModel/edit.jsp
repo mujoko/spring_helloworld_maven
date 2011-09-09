@@ -1,6 +1,16 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<script type="text/javascript" src="resources/js/script.js">
+jq(document).ready(function() {
+	// Init datepicker
+	alert('tettstss');
+	initDatePicker('createdOn', true);
+
+});
+
+
+</script>
 <div>
 	<h2>
 		<c:if test="${boxModel.modelId ne null and boxModel.modelId ne ''}">
@@ -38,6 +48,19 @@
 					<td><label for="boxFive"><spring:message code="create.form.box.five"/>:</label></td>
 					<td><sf:input path="boxFive" size="15" id="box_five" cssClass="textField"/></td>
 					<td><sf:errors path="boxFive" cssClass="error" /></td>
+				</tr>
+				<tr>
+					<td><label for="boxArea"><spring:message code="create.form.box.five"/>:</label></td>
+					<td><sf:textarea path="boxArea" rows="5" cols="30" id="box_area" /></td>
+					<td><sf:errors path="boxArea" cssClass="error" /></td>
+				</tr>
+				
+				<tr>
+					<td><label for="type"><spring:message code="create.form.box.five"/>:</label></td>
+					<td>
+					<sf:radiobutton path="type" value="M" label="M" />
+					 <sf:radiobutton	path="type" value="F" label="F" />
+					<td><sf:errors path="type" cssClass="error" /></td>
 				</tr>
 				
 				<c:set var="postCheckedStatus" value=""/>
