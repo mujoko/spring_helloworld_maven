@@ -83,8 +83,5 @@
 	
 	<tx:annotation-driven />
 	
-	<bean id="applicationService" class="org.spring.helloworld.service.impl.HibernateApplicationService">
-		<constructor-arg ref="sessionFactory" />
-	</bean>	
 	
 </beans>		

@@ -1,3 +1,6 @@
+/**
+ *This source is belong to ahmad.j2ee@gmail.com {replace by website or company name}
+ */
 package org.spring.helloworld.model;
 
 import javax.persistence.Column;
@@ -5,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+/**
+ * @author ahmad.
+ */
 @Entity
 @Table(name="attribute")
 public class Attribute {
@@ -23,7 +28,6 @@ public class Attribute {
 		this.name = name;
 		this.value = value;
 	}
-	
 	
 	public Attribute() {
 		super();

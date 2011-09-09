@@ -1,3 +1,6 @@
+/**
+ *This source is belong to ahmad.j2ee@gmail.com {replace by website or company name}
+ */
 package org.spring.helloworld.model;
 
 import javax.persistence.Column;
@@ -9,11 +12,20 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+
+/**
+ * @author ahmad.
+ */
 @Entity
 @Table(name="box_model")
 public class BoxModel {
 	
 	private static final String PROCESSING_TYPE_DEFAULT = "post";
+
+
+	@Transient
+	private String processingType = PROCESSING_TYPE_DEFAULT;
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,10 +51,17 @@ public class BoxModel {
 	@Size(min=1)
 	@Column(name = "box_five")
 	private String boxFive;
-
-	@Transient
-	private String processingType = PROCESSING_TYPE_DEFAULT;
 	
+//	
+//	/**
+//     * billingPeriod.
+//     */
+//    @Column(name = "BP_DATE")
+//    @Temporal(TemporalType.DATE)
+//    private Date bpDate;
+//    
+    
+		
 	public String getModelId() {
 		return modelId;
 	}
@@ -97,5 +116,13 @@ public class BoxModel {
 	public void setProcessingType(String processingType) {
 		this.processingType = processingType;
 	}
+//
+//	public void setBpDate(Date bpDate) {
+//		this.bpDate = bpDate;
+//	}
+//
+//	public Date getBpDate() {
+//		return bpDate;
+//	}
 
 }
