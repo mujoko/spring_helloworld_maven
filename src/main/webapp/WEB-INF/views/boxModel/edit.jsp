@@ -1,28 +1,18 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<script type="text/javascript" src="resources/js/script.js">
-jq(document).ready(function() {
-	// Init datepicker
-	alert('tettstss');
-	initDatePicker('createdOn', true);
-
-});
-
-
-</script>
 <div>
 	<h2>
-		<c:if test="${boxModel.modelId ne null and boxModel.modelId ne ''}">
-			<spring:message code="edit.form.title" arguments="${boxModel.modelId}"/>
+		<c:if test="${boxModel.id ne null and boxModel.id ne ''}">
+			<spring:message code="edit.form.title" arguments="${boxModel.id}"/>
 		</c:if>
-		<c:if test="${boxModel.modelId eq null or boxModel.modelId eq ''}">
+		<c:if test="${boxModel.id eq null or boxModel.id eq ''}">
 			<spring:message code="create.form.title"/>
 		</c:if>	
 	</h2>
 	<sf:form method="POST" modelAttribute="boxModel" action="boxModel">
 		<fieldset>
-			<sf:hidden path="modelId"/>
+			<sf:hidden path="id"/>
 			<table cellspacing="0">
 				<tr>
 					<td><label for="boxOne"><spring:message code="create.form.box.one"/>:</label></td>
@@ -50,20 +40,43 @@ jq(document).ready(function() {
 					<td><sf:errors path="boxFive" cssClass="error" /></td>
 				</tr>
 				<tr>
-					<td><label for="boxArea"><spring:message code="create.form.box.five"/>:</label></td>
+					<td><label for="boxArea"><spring:message code="create.form.box.area"/>:</label></td>
 					<td><sf:textarea path="boxArea" rows="5" cols="30" id="box_area" /></td>
 					<td><sf:errors path="boxArea" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
-					<td><label for="type"><spring:message code="create.form.box.five"/>:</label></td>
+					<td><label for="status"><spring:message code="create.form.box.status"/>:</label></td>
+					<td>
+					<sf:checkbox  path="status" value="status"  />
+					<td><sf:errors path="status" cssClass="error" /></td>
+				</tr>
+			
+				<tr>
+					<td><label for="type"><spring:message code="create.form.box.type"/>:</label></td>
 					<td>
 					<sf:radiobutton path="type" value="M" label="M" />
 					 <sf:radiobutton	path="type" value="F" label="F" />
 					<td><sf:errors path="type" cssClass="error" /></td>
 				</tr>
-				
-				<c:set var="postCheckedStatus" value=""/>
+				<tr>
+					<td><label for="origin"><spring:message	code="create.form.box.origin" />:</label></td>
+					<td>
+						<sf:select path="origin">
+							<sf:option value="" label="Select" />
+							<sf:option value="India" label="India" />
+							<sf:option value="USA" label="USA" />
+							<sf:option value="UK" label="UK" />
+						</sf:select>
+					<td>
+						<sf:errors path="origin" cssClass="error" />
+					</td>
+				</tr>
+
+
+
+
+		<c:set var="postCheckedStatus" value=""/>
 				<c:set var="getCheckedStatus" value=""/>
 				<c:if test="${boxModel.processingType eq 'post'}">
 					<c:set var="postCheckedStatus" value="checked=checked"/>
@@ -90,14 +103,22 @@ jq(document).ready(function() {
 					</td>	
 				</tr>
 				<tr>
-					<td><a href="boxModel?new"><spring:message code="create.form.reset"/></a></td>
+						<c:if test="${boxModel.id ne null and boxModel.id ne ''}">
+							<c:set var="buttonLabel" value="Update Box Model"/>
+							<td></td>
+						</c:if>
+						<c:if test="${boxModel.id eq null or boxModel.id eq ''}">
+							<c:set var="buttonLabel" value="Save Box Model"/>
+							<td><a href="boxModel?new"><spring:message code="create.form.reset" /></a></td>
+
+						</c:if>
 					<td>
-						<input type="submit" value="Save Box Model" class="submitButton"/>
+						<input type="submit" value=${buttonLabel} } class="submitButton"/>
 					</td>
 				</tr>
 			</table>
 		</fieldset>
-		<c:if test="${boxModel.modelId ne null and boxModel.modelId ne ''}">
+		<c:if test="${boxModel.id ne null and boxModel.id ne ''}">
 			<fieldset id="resultsArea">
 				<table>
 					<tr>
@@ -116,8 +137,12 @@ jq(document).ready(function() {
 								<li><spring:message code="create.form.box.three"/> = ${boxModel.boxThree}</li>
 								<li><spring:message code="create.form.box.four"/> = ${boxModel.boxFour}</li>
 								<li><spring:message code="create.form.box.five"/> = ${boxModel.boxFive}</li>
+								<li><spring:message code="create.form.box.area"/> = ${boxModel.boxArea}</li>
+								<li><spring:message code="create.form.box.type"/> = ${boxModel.type}</li>
+								<li><spring:message code="create.form.box.status"/> = ${boxModel.status}</li>
+								<li><spring:message code="create.form.box.origin"/> = ${boxModel.origin}</li>
 							</ul>
-							<spring:message code="create.form.result.new.id.message" arguments="${boxModel.modelId}"/>
+							<spring:message code="create.form.result.new.id.message" arguments="${boxModel.id}"/>
 							<c:if test="${firstMatch ne null}">
 								<ul>
 									<c:forEach var="match" items="${firstMatch}">  

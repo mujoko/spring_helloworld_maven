@@ -6,6 +6,7 @@ package org.spring.helloworld.service;
 import java.io.Serializable;
 import java.util.Map;
 
+import org.spring.common.dao.GenericDao;
 import org.spring.helloworld.model.Attribute;
 import org.spring.helloworld.model.BoxModel;
 

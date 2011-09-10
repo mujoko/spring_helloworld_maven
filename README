@@ -1,0 +1,25 @@
+How to import this project to eclipse
+1. First you need to have maven installed already in your PC
+2. open you console and in this root project (under spring_helloword_maven folder where pom.xml is located), execute mvn eclipse:eclipse
+3. Open your eclipse
+4. Click File--> Import--> Project-->General  and select Existing Project into workspace
+5. Select Root folder where spring_helloword_maven is located
+
+
+
+Development Guide
+1. Follow Java naming convention for Class Name
+2. New Domain should extends BaseEntity to let you have standard PK
+3. New Service by extends GenericDaoHibernate and GenericDao. By this way, developer can have basic dao for CRUD
+4. Define error message, label in message.properties
+5. Point 2 and 3 to make any developer focus on his business process
+    
+
+Running the application
+1. Change file configuration.properties for database username/password
+2. Create Database schema by execute helloworld.sql
+3. No open your console, goto spring_helloword_maven folder where pom.xml is located
+4. execute mvn jetty:run
+5. point your browser http://localhost:9957/hello
+
+

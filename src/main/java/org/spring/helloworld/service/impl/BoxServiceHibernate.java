@@ -13,6 +13,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.spring.common.dao.GenericDaoHibernate;
 import org.spring.helloworld.model.Attribute;
 import org.spring.helloworld.model.BoxModel;
 import org.spring.helloworld.service.BoxService;

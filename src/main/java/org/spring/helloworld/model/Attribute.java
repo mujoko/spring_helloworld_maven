@@ -5,18 +5,18 @@ package org.spring.helloworld.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.spring.common.model.BaseEntity;
 
 /**
  * @author ahmad.
  */
 @Entity
 @Table(name="attribute")
-public class Attribute {
+public class Attribute extends BaseEntity {
 	
 	
-	@Id
 	@Column(name = "name")
 	private String name;
 

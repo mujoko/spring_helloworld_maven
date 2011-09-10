@@ -7,118 +7,70 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.GenericGenerator;
-
+import org.spring.common.model.BaseEntity;
 
 /**
  * @author ahmad.
  */
 @Entity
-@Table(name="box_model")
-public class BoxModel {
-	
-	private static final String PROCESSING_TYPE_DEFAULT = "post";
-	
-	@Id
-    @GeneratedValue(generator = "idGen")
-    @GenericGenerator(strategy = "uuid.hex", name = "idGen")
-	@Column(name = "model_id")
-	private String modelId;
+@Table(name = "box_model")
+public class BoxModel extends BaseEntity {
 
-	@Size(min=1)
+	private static final String PROCESSING_TYPE_DEFAULT = "post";
+
+
+	@Transient
+	private String processingType = PROCESSING_TYPE_DEFAULT;
+
+	@Size(min = 1)
 	@Column(name = "box_one")
 	private String boxOne;
 
-	@Size(min=1)
+	@Size(min = 1)
 	@Column(name = "box_two")
 	private String boxTwo;
 
-	@Size(min=1)
+	@Size(min = 1)
 	@Column(name = "box_three")
 	private String boxThree;
 
-	@Size(min=1)
+	@Size(min = 1)
 	@Column(name = "box_four")
 	private String boxFour;
 
-	@Size(min=1)
+	@Size(min = 1)
 	@Column(name = "box_five")
 	private String boxFive;
 
-	@Size(min=1)
+	@Size(min = 1)
 	@Column(name = "box_area")
 	private String boxArea;
 
+	@Column(name = "created_on")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdOn;
 
-    public String getBoxArea() {
-		return boxArea;
-	}
+	@Column(name = "status",  length = 1)
+	private Boolean status;
 
-	public void setBoxArea(String boxArea) {
-		this.boxArea = boxArea;
-	}
-
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	/** Entity Created On. */
-    @Column(name = "CREATED_ON")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdOn;
-    
-    @Column(name = "active", nullable = true, length = 1)
-    private Boolean active;
-    
-    
-    
-    
-    @Column(name = "type", nullable = true, length = 1)
-    private String type;
-    
-    
-    
-    
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-
-
+	@Column(name = "type",  length = 1)
+	private String type;
 	
-	@Transient
-	private String processingType = PROCESSING_TYPE_DEFAULT;
-	
-	public String getModelId() {
-		return modelId;
+	@Column(name = "origin")
+	private String origin;
+
+	public String getOrigin() {
+		return origin;
 	}
 
-	public void setModelId(String modelId) {
-		this.modelId = modelId;
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
 	public String getBoxOne() {
 		return boxOne;
@@ -159,13 +111,45 @@ public class BoxModel {
 	public void setBoxFive(String boxFive) {
 		this.boxFive = boxFive;
 	}
-	
+
 	public String getProcessingType() {
 		return processingType;
 	}
 
 	public void setProcessingType(String processingType) {
 		this.processingType = processingType;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public String getBoxArea() {
+		return boxArea;
+	}
+
+	public void setBoxArea(String boxArea) {
+		this.boxArea = boxArea;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping({"/boxModel"})
-public class HelloWorldController {
+public class BoxModelController {
 	
-	final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
+	final Logger logger = LoggerFactory.getLogger(BoxModelController.class);
 
 	@Autowired
 	private BoxService boxService;
@@ -49,7 +49,7 @@ public class HelloWorldController {
 			return "boxModel/edit";
 		}
 		
-		if(boxModel.getModelId() != null && !boxModel.getModelId().equals("")){
+		if(boxModel.getId() != null && !boxModel.getId().equals("")){
 			boxService.update(boxModel);
 		}else{
 			boxService.save(boxModel);
@@ -57,8 +57,9 @@ public class HelloWorldController {
 		
 		Map<String, Attribute> firstMatchingAttribute = boxService.findFirstMatch(boxModel);
 		if(!firstMatchingAttribute.isEmpty()){
-			model.put("firstMatch", firstMatchingAttribute);
+//			model.put("firstMatch", firstMatchingAttribute);
 		}
 		return "boxModel/edit";
 	}	
 }
+

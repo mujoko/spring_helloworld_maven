@@ -5,6 +5,7 @@ package org.spring.helloworld.service;
 
 import java.io.Serializable;
 
+import org.spring.common.dao.GenericDao;
 import org.spring.helloworld.model.Attribute;
 
 

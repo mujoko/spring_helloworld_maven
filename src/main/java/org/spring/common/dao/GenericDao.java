@@ -1,7 +1,7 @@
 /**
  *This source is belong to ahmad.j2ee@gmail.com {replace by website or company name}
  */
-package org.spring.helloworld.service;
+package org.spring.common.dao;
 
 import java.io.Serializable;
 
