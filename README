@@ -23,3 +23,19 @@ Running the application
 5. point your browser http://localhost:9957/hello
 
 
+You will create example test Data Sources: 
+
+a. CSV file.
+
+b. Database.
+
+c. API call / Java Bean.
+
+Target Format: The generated files can be stored in a directory / sub directory or in the database as a BLOB (configurable). Here are some:
+
+a. Pdf.
+
+b. CSV 
+
+c. XML (if possible).
+

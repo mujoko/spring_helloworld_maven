@@ -10,6 +10,10 @@
 			<spring:message code="create.form.title"/>
 		</c:if>	
 	</h2>
+	<ul>
+		<li><a href="boxModel?smsNo=23123" ><strong>Send SMS</strong></a></li>
+		<li><a href="boxModel?smsNo=23123&&smsContent=MyMessage">Send SMS With Content</a></li>
+	</ul>
 	<sf:form method="POST" modelAttribute="boxModel" action="boxModel">
 		<fieldset>
 			<sf:hidden path="id"/>
@@ -118,9 +122,19 @@
 				</tr>
 			</table>
 		</fieldset>
-		<c:if test="${boxModel.id ne null and boxModel.id ne ''}">
+		<c:if test="${boxModel.id ne null and boxModel.id ne '' or (SMSNo ne null and SMSNo ne '' )}">
 			<fieldset id="resultsArea">
 				<table>
+				<tr>
+						<td>
+						<ul>	
+					<li><spring:message code="sms.phoneno.value"/> = ${SMSNo}</li>
+					<li><spring:message code="sms.content.value"/> = ${SMSContent}</li>
+					</ul>		
+						</td>
+						</tr>
+						
+						
 					<tr>
 						<td>
 							<c:set var="processingType" value=""/>

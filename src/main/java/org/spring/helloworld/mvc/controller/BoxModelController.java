@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author ahmad.
@@ -37,15 +38,31 @@ public class BoxModelController {
 		return "boxModel/edit";
 	}
 	
+	
+
+        @RequestMapping(method = RequestMethod.GET)
+        public String list(Model model, @RequestParam(value="smsNo") String  smsNo , @RequestParam(value="smsContent", required=false) String  smsContent ){
+            System.out.println("============");
+            System.out.println("Sending SMS with :");
+            System.out.println("SMSNo :"+smsNo);
+            System.out.println("SMSContent :"+smsContent);
+            
+            model.addAttribute("SMSNo", smsNo);
+            model.addAttribute("SMSContent", smsContent);
+            
+            model.addAttribute(new BoxModel());
+            return "boxModel/edit";
+        }
+	
 	@RequestMapping
-	public String addModelBox(@Valid BoxModel boxModel,	BindingResult bindingResult, Map model) throws Exception {
+	public String addModelBox(@Valid BoxModel boxModel, BindingResult bindingResult, Map model) throws Exception {
 		if(boxModel.getProcessingType().equals("post")){
-			logger.info("Processing request via POST ...");
+			System.out.println("Processing request via POST ...");
 		}else{
-			logger.info("Processing request via GET ...");
+			System.out.println("Processing request via GET ...");
 		}
 		if(bindingResult.hasErrors()) {
-			logger.info("Returning with errors back on the form!");
+			System.out.println("Returning with errors back on the form!");
 			return "boxModel/edit";
 		}
 		
